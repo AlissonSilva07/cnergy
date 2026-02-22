@@ -37,7 +37,7 @@ export const AppInput = forwardRef<TextInput, AppInputProps>(
           style={[
             styles.input,
             {
-              borderWidth: isFocused ? 1.5 : 1,
+              borderWidth: 1,
               borderColor: getInputBorderColor(),
             },
           ]}
