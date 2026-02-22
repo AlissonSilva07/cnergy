@@ -1,13 +1,16 @@
 import { appColors } from "@/constants/colors";
+import { StatusBar } from "expo-status-bar";
 import { ReactNode } from "react";
 import { StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { AppTopBar, AppTopBarProps } from "./top-bar";
 
 interface AuthLayoutProps {
+  topBar?: AppTopBarProps;
   children: ReactNode;
 }
 
-function AuthLayout({ children }: AuthLayoutProps) {
+function AuthLayout({ topBar, children }: AuthLayoutProps) {
   const insets = useSafeAreaInsets();
   return (
     <View
@@ -15,11 +18,19 @@ function AuthLayout({ children }: AuthLayoutProps) {
         styles.container,
         {
           paddingTop: insets.top,
-          paddingBottom: insets.bottom,
+          backgroundColor: topBar ? appColors.primary : appColors.background,
         },
       ]}
     >
+      {topBar && (
+        <AppTopBar
+          title={topBar.title}
+          navigationButton={topBar.navigationButton}
+          actions={topBar.actions}
+        />
+      )}
       {children}
+      <StatusBar style={topBar ? "light" : "dark"} animated />
     </View>
   );
 }
@@ -29,6 +40,5 @@ export { AuthLayout };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: appColors.background,
   },
 });

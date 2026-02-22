@@ -4,7 +4,7 @@ import { OnboardingCard } from "@/components/ui/onboarding-card";
 import { appColors } from "@/constants/colors";
 import { appMeasurements } from "@/constants/measurements";
 import { textStyles } from "@/constants/textStyles";
-import { StatusBar } from "expo-status-bar";
+import { router } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function IndexScreen() {
@@ -28,7 +28,10 @@ export default function IndexScreen() {
           <OnboardingCard emoji="✅" text="Conclua tarefas" />
         </ScrollView>
         <View style={styles.buttonArea}>
-          <AppButton title="Fazer Login" />
+          <AppButton
+            title="Fazer Login"
+            onPress={() => router.navigate("/login")}
+          />
           <Text
             style={[textStyles.default, { color: appColors.textSecondary }]}
           >
@@ -41,7 +44,6 @@ export default function IndexScreen() {
           </Text>
         </View>
       </View>
-      <StatusBar style="dark" animated />
     </AuthLayout>
   );
 }
