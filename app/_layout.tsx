@@ -5,7 +5,8 @@ import { ActivityIndicator } from "react-native";
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    "Google Sans": require("@/assets/fonts/google-sans.ttf"),
+    "Google Sans": require("@/assets/fonts/google-sans-regular.ttf"),
+    "Google Sans Bold": require("@/assets/fonts/google-sans-bold.ttf"),
     "DM Serif Display": require("@/assets/fonts/dm-sans.ttf"),
   });
 
