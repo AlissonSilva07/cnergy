@@ -1,6 +1,10 @@
 import { StyleSheet } from "react-native";
 
 export const textStyles = StyleSheet.create({
+  display: {
+    fontFamily: "DM Serif Display",
+    fontSize: 32,
+  },
   title: {
     fontFamily: "DM Serif Display",
     fontSize: 24,

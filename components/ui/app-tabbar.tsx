@@ -26,7 +26,7 @@ export const AppTabBar = ({
     <View
       style={[
         styles.tabbar,
-        { bottom: insets.bottom, marginHorizontal: screenWidth / 6 },
+        { bottom: insets.bottom, marginHorizontal: screenWidth / 8 },
       ]}
     >
       {state.routes.map((route, index) => {
@@ -40,6 +40,9 @@ export const AppTabBar = ({
         const icon = {
           index: (props: any) => (
             <Ionicons name="home-outline" size={20} {...props} />
+          ),
+          favorites: (props: any) => (
+            <Ionicons name="bookmarks-outline" size={20} {...props} />
           ),
           settings: (props: any) => (
             <Ionicons name="settings-outline" size={20} {...props} />

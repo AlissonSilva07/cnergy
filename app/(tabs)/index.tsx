@@ -1,14 +1,31 @@
-import { AuthLayout } from "@/components/layout/auth-layout";
+import { MainLayout } from "@/components/layout/main-layout";
+import { AppTabs } from "@/components/ui/app-tabs";
+import { appColors } from "@/constants/colors";
 import { appMeasurements } from "@/constants/measurements";
-import { StyleSheet, View } from "react-native";
+import { textStyles } from "@/constants/textStyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function IndexScreen() {
   const insets = useSafeAreaInsets();
   return (
-    <AuthLayout>
-      <View style={[styles.container, { paddingBottom: insets.bottom }]}></View>
-    </AuthLayout>
+    <MainLayout>
+      <View style={[styles.container, { paddingBottom: insets.bottom }]}>
+        <View style={styles.header}>
+          <Text style={textStyles.display}>Home</Text>
+          <Pressable>
+            <Ionicons
+              name="notifications-outline"
+              size={24}
+              color={appColors.primary}
+            />
+          </Pressable>
+        </View>
+
+        <AppTabs />
+      </View>
+    </MainLayout>
   );
 }
 
@@ -16,6 +33,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    gap: appMeasurements.md,
+  },
+  header: {
+    height: 56,
+    width: "100%",
+    paddingHorizontal: appMeasurements.md,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 });
