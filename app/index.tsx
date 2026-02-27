@@ -6,15 +6,17 @@ import { appMeasurements } from "@/constants/measurements";
 import { textStyles } from "@/constants/textStyles";
 import { router } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function IndexScreen() {
+  const insets = useSafeAreaInsets();
   return (
     <AuthLayout>
-      <View style={styles.container}>
+      <View style={[styles.container, { paddingBottom: insets.bottom }]}>
         <View style={styles.topText}>
           <Text style={textStyles.title}>cnergy</Text>
           <Text style={textStyles.titleSmall}>
-            Alcance a sinergia necessária para manter a casa sob controle
+            Alcance a sinergia necessária para ter dias melhores
           </Text>
           <Text style={textStyles.default}>Comece hoje mesmo.</Text>
         </View>
@@ -23,15 +25,23 @@ export default function IndexScreen() {
           style={styles.scroll}
           contentContainerStyle={styles.scrollContent}
         >
-          <OnboardingCard emoji="🙋‍♀️" text="Convide amigos" />
-          <OnboardingCard emoji="🎯" text="Estabeleca tarefas" />
-          <OnboardingCard emoji="✅" text="Conclua tarefas" />
+          <OnboardingCard emoji="🙋‍♀️" text="Convide amigos para o app" />
+          <OnboardingCard emoji="✍🏻" text="Compartilhe coisas boas" />
+          <OnboardingCard emoji="💡" text="Ilumine suas ideias" />
         </ScrollView>
-        <View style={styles.buttonArea}>
-          <AppButton
-            title="Fazer Login"
-            onPress={() => router.navigate("/login")}
-          />
+        <View style={styles.spacer} />
+        <View style={styles.interactionArea}>
+          <View style={styles.buttonsArea}>
+            <AppButton
+              title="Fazer Login"
+              onPress={() => router.navigate("/login")}
+            />
+            <AppButton
+              title="Entrar como visitante"
+              onPress={() => router.navigate("/login")}
+              variant="muted"
+            />
+          </View>
           <Text
             style={[textStyles.default, { color: appColors.textSecondary }]}
           >
@@ -51,7 +61,6 @@ export default function IndexScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: appMeasurements.xxl,
     flexDirection: "column",
     gap: appMeasurements.md,
   },
@@ -63,15 +72,23 @@ const styles = StyleSheet.create({
   scroll: {
     maxHeight: 180,
   },
+  spacer: {
+    flex: 1,
+  },
   scrollContent: {
     paddingHorizontal: appMeasurements.md,
     gap: appMeasurements.md,
   },
-  buttonArea: {
+  interactionArea: {
     width: "100%",
     flexDirection: "column",
     alignItems: "center",
     gap: appMeasurements.md,
     paddingHorizontal: 16,
+  },
+  buttonsArea: {
+    width: "100%",
+    flexDirection: "column",
+    gap: appMeasurements.sm,
   },
 });
