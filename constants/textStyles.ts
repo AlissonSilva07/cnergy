@@ -25,4 +25,12 @@ export const textStyles = StyleSheet.create({
     fontFamily: "Google Sans Bold",
     fontSize: 12,
   },
+  extraSmall: {
+    fontFamily: "Google Sans",
+    fontSize: 10,
+  },
+  extraSmallBold: {
+    fontFamily: "Google Sans Bold",
+    fontSize: 10,
+  },
 });

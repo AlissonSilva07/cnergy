@@ -64,7 +64,10 @@ export default function LoginScreen() {
           secureTextEntry={true}
         />
         <View style={styles.buttonsArea}>
-          <AppButton title="Entrar" onPress={() => router.navigate("/login")} />
+          <AppButton
+            title="Entrar"
+            onPress={() => router.navigate("/(tabs)")}
+          />
           <Text
             style={[textStyles.default, { color: appColors.textSecondary }]}
           >
