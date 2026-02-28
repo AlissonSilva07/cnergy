@@ -6,5 +6,5 @@ export const appColors = {
   textPrimary: "#000000",
   textSecondary: "#ADADAD",
   surface: "#F5F5F5",
-  border: "#707070",
+  border: "#EAEAEA",
 };

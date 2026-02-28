@@ -1,17 +1,41 @@
 import { appColors } from "@/constants/colors";
 import { appMeasurements } from "@/constants/measurements";
-import { textStyles } from "@/constants/textStyles";
-import { StyleSheet, Text, View } from "react-native";
+import { ReactNode, useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { AppTabsSelector } from "./app-tabs-selector";
 
-function AppTabs() {
+export interface AppTabsItem {
+  key: string;
+  title: string;
+  tab: ReactNode;
+}
+
+interface AppTabsProps {
+  items: AppTabsItem[];
+}
+
+function AppTabs({ items }: AppTabsProps) {
+  const [selectedTab, setSelectedTab] = useState<AppTabsItem>(items[0]);
+
+  if (!items || items.length === 0) return null;
+
   return (
     <View style={styles.container}>
-      <View style={styles.tabSelector}>
-        <View style={styles.tabSelectorItem}>
-          <Text style={textStyles.default}>Pra você</Text>
-          <View style={styles.tabSelectorItemIndicator} />
-        </View>
-      </View>
+      <ScrollView
+        horizontal
+        style={styles.tabSelector}
+        contentContainerStyle={styles.tabSelectorScroll}
+      >
+        {items.map((item, index) => (
+          <AppTabsSelector
+            key={index}
+            item={item}
+            isSelected={selectedTab === item}
+            onSelect={(item: AppTabsItem) => setSelectedTab(item)}
+          />
+        ))}
+      </ScrollView>
+      {selectedTab.tab}
     </View>
   );
 }
@@ -24,26 +48,14 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   tabSelector: {
-    height: 56,
+    maxHeight: 56,
     width: "100%",
-    paddingHorizontal: appMeasurements.md,
-    flexDirection: "row",
-    alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: appColors.border,
   },
-  tabSelectorItem: {
-    width: 180,
-    padding: appMeasurements.md,
-    position: "relative",
-  },
-  tabSelectorItemIndicator: {
-    height: 2,
-    width: 60,
-    position: "absolute",
-    bottom: 0,
-    right: 0,
-    left: 0,
-    backgroundColor: appColors.primary,
+  tabSelectorScroll: {
+    paddingHorizontal: appMeasurements.md,
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
