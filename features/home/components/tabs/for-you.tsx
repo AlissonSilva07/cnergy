@@ -1,4 +1,3 @@
-import { MainLayout } from "@/components/layout/main-layout";
 import { textStyles } from "@/constants/textStyles";
 import { StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -6,11 +5,9 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 function ForYouTab() {
   const insets = useSafeAreaInsets();
   return (
-    <MainLayout>
-      <View style={[styles.container, { paddingBottom: insets.bottom }]}>
-        <Text style={textStyles.default}>For you</Text>
-      </View>
-    </MainLayout>
+    <View style={styles.container}>
+      <Text style={textStyles.default}>For you</Text>
+    </View>
   );
 }
 

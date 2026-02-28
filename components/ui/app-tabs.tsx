@@ -26,16 +26,16 @@ function AppTabs({ items }: AppTabsProps) {
         style={styles.tabSelector}
         contentContainerStyle={styles.tabSelectorScroll}
       >
-        {items.map((item, index) => (
+        {items.map((item) => (
           <AppTabsSelector
-            key={index}
+            key={item.key}
             item={item}
             isSelected={selectedTab === item}
             onSelect={(item: AppTabsItem) => setSelectedTab(item)}
           />
         ))}
       </ScrollView>
-      {selectedTab.tab}
+      <View style={styles.content}>{selectedTab.tab}</View>
     </View>
   );
 }
@@ -57,5 +57,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: appMeasurements.md,
     flexDirection: "row",
     alignItems: "center",
+  },
+  content: {
+    flex: 1,
   },
 });
