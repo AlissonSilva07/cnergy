@@ -26,7 +26,10 @@ export const AppTabBar = ({
     <View
       style={[
         styles.tabbar,
-        { bottom: insets.bottom, marginHorizontal: screenWidth / 8 },
+        {
+          bottom: insets.bottom + appMeasurements.md,
+          marginHorizontal: screenWidth / 8,
+        },
       ]}
     >
       {state.routes.map((route, index) => {
