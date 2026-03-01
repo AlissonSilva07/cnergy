@@ -3,11 +3,11 @@ import { appMeasurements } from "@/constants/measurements";
 import { textStyles } from "@/constants/textStyles";
 import React, { forwardRef } from "react";
 import {
-    StyleSheet,
-    Text,
-    TextInput,
-    TextInputProps,
-    View,
+  StyleSheet,
+  Text,
+  TextInput,
+  TextInputProps,
+  View,
 } from "react-native";
 
 interface AppInputProps extends TextInputProps {
