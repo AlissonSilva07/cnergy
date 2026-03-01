@@ -1,6 +1,7 @@
 import { appColors } from "@/constants/colors";
+import useAuthStore from "@/features/auth/store/auth.store";
 import { useFonts } from "expo-font";
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 import { ActivityIndicator } from "react-native";
 
 export default function RootLayout() {
@@ -10,7 +11,20 @@ export default function RootLayout() {
     "DM Serif Display": require("@/assets/fonts/dm-sans.ttf"),
   });
 
+  const { user } = useAuthStore();
+
   if (!loaded) return <ActivityIndicator color={appColors.secondary} />;
 
-  return <Slot />;
+  return (
+    <Stack>
+      <Stack.Protected guard={!!user}>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack.Protected>
+
+      <Stack.Protected guard={!user}>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="login" options={{ headerShown: false }} />
+      </Stack.Protected>
+    </Stack>
+  );
 }

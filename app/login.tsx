@@ -4,19 +4,17 @@ import { AppInput } from "@/components/ui/app-input";
 import { appColors } from "@/constants/colors";
 import { appMeasurements } from "@/constants/measurements";
 import { textStyles } from "@/constants/textStyles";
+import { useLogin } from "@/features/login/hooks/useLogin";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router } from "expo-router";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Keyboard, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function LoginScreen() {
   const emailRef = useRef<TextInput | null>(null);
   const passwordRef = useRef<TextInput | null>(null);
 
-  const [email, setEmail] = useState<string>("");
-  const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
-  const [password, setPassword] = useState<string>("");
-  const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
+  const { email, password, isLoading, handleLogin } = useLogin();
 
   return (
     <AuthLayout
@@ -34,12 +32,12 @@ export default function LoginScreen() {
         <Text style={textStyles.titleSmall}>Vamos preparar a sua conta</Text>
         <AppInput
           ref={emailRef}
-          value={email}
-          onChangeText={(value: string) => setEmail(value)}
-          onFocus={() => setIsEmailFocused(true)}
-          onBlur={() => setIsEmailFocused(false)}
+          value={email.value}
+          onChangeText={(value: string) => email.setValue(value)}
+          onFocus={() => email.setFocused(true)}
+          onBlur={() => email.setFocused(false)}
           label="Email"
-          isFocused={isEmailFocused}
+          isFocused={email.isFocused}
           placeholder="Digite seu email"
           keyboardType="email-address"
           returnKeyType="next"
@@ -48,12 +46,12 @@ export default function LoginScreen() {
         />
         <AppInput
           ref={passwordRef}
-          value={password}
-          onChangeText={(value: string) => setPassword(value)}
-          onFocus={() => setIsPasswordFocused(true)}
-          onBlur={() => setIsPasswordFocused(false)}
+          value={password.value}
+          onChangeText={(value: string) => password.setValue(value)}
+          onFocus={() => password.setFocused(true)}
+          onBlur={() => password.setFocused(false)}
           label="Senha"
-          isFocused={isPasswordFocused}
+          isFocused={password.isFocused}
           placeholder="Digite sua senha"
           keyboardType="default"
           returnKeyType="done"
@@ -66,7 +64,9 @@ export default function LoginScreen() {
         <View style={styles.buttonsArea}>
           <AppButton
             title="Entrar"
-            onPress={() => router.navigate("/(tabs)")}
+            variant={isLoading ? "loading" : "default"}
+            disabled={isLoading}
+            onPress={handleLogin}
           />
           <Text
             style={[textStyles.default, { color: appColors.textSecondary }]}
