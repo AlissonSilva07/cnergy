@@ -17,13 +17,13 @@ export interface AppTopBarProps {
 
 const DefaultPlaceholderButton = () => (
   <Pressable style={styles.btnPadding}>
-    <Ionicons name="chevron-back" size={24} color={appColors.primary} />
+    <Ionicons name="chevron-back" size={24} color={appColors.background} />
   </Pressable>
 );
 
 function AppTopBar({ title, navigationButton, actions }: AppTopBarProps) {
   return (
-    <View style={[styles.container]}>
+    <View style={styles.container}>
       {navigationButton ? (
         <Pressable onPress={navigationButton.action} style={styles.btnPadding}>
           {navigationButton.icon && navigationButton.icon}
@@ -31,7 +31,7 @@ function AppTopBar({ title, navigationButton, actions }: AppTopBarProps) {
       ) : (
         <DefaultPlaceholderButton />
       )}
-      <Text style={[textStyles.defaultBold, { color: appColors.background }]}>
+      <Text style={[textStyles.defaultBold, { color: appColors.primary }]}>
         {title}
       </Text>
       {actions && actions.length > 0 ? (
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: 56,
-    backgroundColor: appColors.primary,
+    backgroundColor: appColors.background,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

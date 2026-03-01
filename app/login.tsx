@@ -22,7 +22,7 @@ export default function LoginScreen() {
         title: "Login",
         navigationButton: {
           icon: (
-            <Ionicons name="close" size={24} color={appColors.background} />
+            <Ionicons name="chevron-back" size={24} color={appColors.primary} />
           ),
           action: () => router.back(),
         },

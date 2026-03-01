@@ -18,7 +18,7 @@ function AuthLayout({ topBar, children }: AuthLayoutProps) {
         styles.container,
         {
           paddingTop: insets.top,
-          backgroundColor: topBar ? appColors.primary : appColors.background,
+          backgroundColor: appColors.background,
         },
       ]}
     >
@@ -30,7 +30,7 @@ function AuthLayout({ topBar, children }: AuthLayoutProps) {
         />
       )}
       {children}
-      <StatusBar style={topBar ? "light" : "dark"} animated />
+      <StatusBar style={"dark"} animated />
     </View>
   );
 }
