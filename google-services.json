@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "554590862054",
+    "project_id": "cnergy-b603a",
+    "storage_bucket": "cnergy-b603a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554590862054:android:ec52123494cfce8821d927",
+        "android_client_info": {
+          "package_name": "com.alisson.cnergy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554590862054-shoo6337rd1n8td98s5etlf6g3ocdoc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVYBjwf213HLPCjVTKFrVrMp0QPNCBe1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554590862054-shoo6337rd1n8td98s5etlf6g3ocdoc0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "554590862054-6dch1jjcmv210fgmnb2ictvr6ne3065i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.alisson.cnergy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

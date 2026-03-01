@@ -3,12 +3,12 @@ import { appMeasurements } from "@/constants/measurements";
 import { textStyles } from "@/constants/textStyles";
 import React from "react";
 import {
-    ActivityIndicator,
-    ColorValue,
-    Pressable,
-    PressableProps,
-    StyleSheet,
-    Text,
+  ActivityIndicator,
+  ColorValue,
+  Pressable,
+  PressableProps,
+  StyleSheet,
+  Text,
 } from "react-native";
 
 export type AppButtonVariant = "default" | "muted" | "disabled" | "loading";
@@ -35,7 +35,7 @@ export function AppButton({
     switch (variant) {
       case "default":
         colors = {
-          bg: appColors.primary,
+          bg: appColors.secondary,
           text: appColors.background,
         };
         break;

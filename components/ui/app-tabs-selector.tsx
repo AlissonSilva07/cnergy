@@ -19,7 +19,7 @@ function AppTabsSelector({ item, isSelected, onSelect }: AppTabsSelectorProps) {
       <Text
         style={[
           textStyles.default,
-          { color: isSelected ? appColors.primary : appColors.textSecondary },
+          { color: isSelected ? appColors.secondary : appColors.textSecondary },
         ]}
       >
         {item.title}
@@ -30,7 +30,7 @@ function AppTabsSelector({ item, isSelected, onSelect }: AppTabsSelectorProps) {
             styles.tabSelectorItemIndicatorActive,
             {
               backgroundColor: isSelected
-                ? appColors.primary
+                ? appColors.secondary
                 : appColors.textSecondary,
             },
           ]}
